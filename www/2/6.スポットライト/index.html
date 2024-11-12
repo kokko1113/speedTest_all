@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>スポットライト</title>
+</head>
+<body>
+    <div id="div"></div>
+    <img id="img" src="https://ssl.twitcasting.tv/img/logo_ogp.png" alt="">
+</body>
+</html>
+<script>
+    const img=document.getElementById("img")
+    const div=document.getElementById("div")
+
+    let x=100
+    img.addEventListener('mousemove',(e)=>{
+        div.style.backgroundImage=`radial-gradient(circle at ${e.clientX}px ${e.clientY}px,rgb(0,0,0,0), rgb(0,0,0,0) ${x}px, rgb(0,0,0,.8) ${x+30}px)`
+    })
+    img.addEventListener('wheel',(e)=>{
+        if(e.deltaY<0){
+            x++
+        }else{
+            x--
+        }
+        if(x<10){
+            x=10
+        }
+        div.style.backgroundImage=`radial-gradient(circle at ${e.clientX}px ${e.clientY}px,rgb(0,0,0,0), rgb(0,0,0,0) ${x}px, rgb(0,0,0,.8) ${x+30}px)`
+    })
+    img.addEventListener('mouseleave',()=>{
+        div.style.background="none"
+    })
+</script>
+<style>
+    img{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 400px;
+        z-index: -10;
+    }
+    div{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        pointer-events: none;
+    }
+</style>

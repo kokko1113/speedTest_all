@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="a">
+        <p>30%</p>
+        <p>70%</p>
+    </div>
+</body>
+</html>
+<style>
+    .a{
+        width: 100px;
+        height: 100px;
+        background: radial-gradient(red 30%,blue 100%);
+        border-radius: 50%;
+    }
+    p{
+        position: absolute;
+    }
+    p:nth-child(1){
+        top: 30%;
+        left: 30%;
+    }
+    p:nth-child(1){
+        top: 70%;
+        left: 70%;
+    }
+</style>

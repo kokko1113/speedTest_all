@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="canvas" width="300px" height="300"></canvas>
+    <div id="btns"></div>
+    <button id="jpg">jpg</button>
+    <button id="png">png</button>
+</body>
+
+</html>
+<script>
+    const canvas = document.getElementById("canvas")
+    const ctx = canvas.getContext("2d")
+    const btns = document.getElementById("btns")
+
+    let color="black"
+    const colors = ["black", "red", "blue", "green", "orange"]
+    for (let i = 0; i < 5; i++) {
+        btns.innerHTML+=`<div onclick="select(${i})" id="btn"style="background:${colors[i]}"></div>`
+    }
+    const select=(num)=>{
+        color=colors[num]
+    }
+    ctx.strokeRect(0,0,300,300)
+    let flag=false
+    canvas.addEventListener('mousedown',(e)=>{
+        flag=true
+        ctx.beginPath()
+        ctx.strokeStyle=color
+        ctx.lineWidth=2
+        ctx.moveTo(e.offsetX,e.offsetY)
+    })
+    canvas.addEventListener('mousemove',(e)=>{
+        if(flag){
+            ctx.lineTo(e.offsetX,e.offsetY)
+            ctx.stroke()
+        }
+    })
+    canvas.addEventListener('mouseup',(e)=>{
+        flag=false
+    })
+</script>
+<style>
+    #btn{
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        border: 3px solid gray;
+    }
+</style>

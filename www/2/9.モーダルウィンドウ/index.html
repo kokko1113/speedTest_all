@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="open">open</button>
+    <div id="back"></div>
+    <div id="div">
+        <p>モーダルウィンドウです</p>
+        <button id="close">close</button>
+    </div>
+</body>
+</html>
+<script>
+    const div=document.getElementById("div")
+    const back=document.getElementById("back")
+    const open=document.getElementById("open")
+    const close=document.getElementById("close")
+
+    open.addEventListener('click',()=>{
+        div.style.display="block"
+        back.style.display="block"
+        document.body.style.overflow="hidden"
+    })
+    close.addEventListener('click',()=>{
+        div.style.display="none"
+        back.style.display="none"
+    })
+    back.addEventListener('click',()=>{
+        div.style.display="none"
+        back.style.display="none"
+        document.body.style.overflow="auto"
+    })
+</script>
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    body{
+        height: 200vh;
+    }
+    #open{
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        translate: -50% -50%;
+    }
+    #div{
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        translate: -50% -50%;
+        display: none;
+        width: 300px;
+        height: 200px;
+        background-color: pink;
+        border: 2px solid black;
+        z-index: 10;
+    }
+    #back{
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        translate: -50% -50%;
+        display: none;
+        width: 100vw;
+        height: 100vh;
+    }
+</style>

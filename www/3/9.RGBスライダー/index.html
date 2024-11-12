@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="area"></div>
+    R:<input type="range" id="red" max="255">
+    G:<input type="range" id="green" max="255">
+    B:<input type="range" id="blue" max="255">
+</body>
+
+</html>
+<script>
+    const area = document.getElementById("area")
+    const red = document.getElementById("red")
+    const green = document.getElementById("green")
+    const blue = document.getElementById("blue")
+
+    let redValue = 127
+    let greenValue = 127
+    let blueValue = 127
+    area.textContent = `rgb(${redValue},${greenValue},${blueValue})`
+    area.style.background = `rgb(${redValue},${greenValue},${blueValue})`
+    red.addEventListener('input', () => {
+        redValue = red.value
+        area.textContent = `rgb(${redValue},${greenValue},${blueValue})`
+        area.style.background = `rgb(${redValue},${greenValue},${blueValue})`
+    })
+    green.addEventListener('input', () => {
+        greenValue = green.value
+        area.textContent = `rgb(${redValue},${greenValue},${blueValue})`
+        area.style.background = `rgb(${redValue},${greenValue},${blueValue})`
+    })
+    blue.addEventListener('input', () => {
+        blueValue = blue.value
+        area.textContent = `rgb(${redValue},${greenValue},${blueValue})`
+        area.style.background = `rgb(${redValue},${greenValue},${blueValue})`
+    })
+</script>
+<style>
+    #area {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 300px;
+        height: 200px;
+        border: 2px solid black;
+    }
+</style>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <section>セクション01</section>
+        <section>セクション02</section>
+        <section>セクション03</section>
+    </div>
+</body>
+
+</html>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    div {
+        overflow: auto;
+        scroll-snap-type: y mandatory;
+        height: 100vh;
+    }
+
+    section {
+        scroll-snap-align: start;
+        height: 100vh;
+    }
+
+    section:nth-child(1) {
+        background: pink;
+    }
+
+    section:nth-child(2) {
+        background: skyblue;
+    }
+
+    section:nth-child(3) {
+        background: orange;
+    }
+</style>

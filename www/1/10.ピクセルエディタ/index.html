@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="area"></div>
+    <div id="btns"></div>
+</body>
+
+</html>
+<script>
+    const area = document.getElementById("area")
+    const btns = document.getElementById("btns")
+
+    let count = 0
+    let selectColor = "transparent"
+    const colors = ["red", "black", "blue", "green", "pink", "orange", "skyblue", "white", "yellowgreen", "gray", "brown", "aqua", "purple", "plum", "bisque", "turquoise"]
+    for (let i = 0; i < 16; i++) {
+        btns.innerHTML += `<button class="${i}"id="color"style="background:${colors[i]}" onclick="selection(${i})"></button>`
+        for (let j = 0; j < 16; j++) {
+            area.innerHTML += `<div onclick="draw(${count})" class="${count}" id="pixel"></div>`
+            count++
+        }
+    }
+
+    const selection = (num) => {
+        const arry = document.getElementsByTagName("button")
+        for (let i = 0; i < arry.length; i++) {
+            if (arry[i].classList == num) {
+                selectColor = colors[i]
+                arry[i].style.border = "3px solid yellow"
+            } else {
+                arry[i].style.border = "3px solid  rgb(194, 194, 194)"
+            }
+        }
+    }
+
+    const draw = (num) => {
+        const arry = document.getElementsByTagName("div")
+        arry[num + 1].style.background = selectColor
+    }
+</script>
+<style>
+    #area {
+        width: 270px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    #btns {
+        width: 210px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    #color {
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        border: 3px solid rgb(194, 194, 194);
+    }
+
+    #pixel {
+        width: 15px;
+        height: 15px;
+        border: .5px solid gray;
+    }
+</style>

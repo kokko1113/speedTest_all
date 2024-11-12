@@ -1,0 +1,11 @@
+<?php
+$arr1=[1,2,3,4,5];
+$arr2=[1,3,5,7,9];
+for($i=0;$i<count($arr1);$i++){
+    for($j=0;$j<count($arr2);$j++){
+        if($arr1[$i]==$arr2[$j]){
+            print_r($arr1[$i]);
+        }
+    }
+}
+?>

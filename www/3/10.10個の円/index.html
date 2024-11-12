@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+</body>
+</html>
+<script>
+    window.addEventListener('load',()=>{
+        for(let i=0;i<10;i++){
+            const circle=document.createElement("div")
+            circle.style.background=`rgb(${Math.random()*255},${Math.random()*255},${Math.random()*255})`
+            circle.style.borderRadius="50%"
+            circle.style.width="70px"
+            circle.style.height="70px"
+            circle.style.position="absolute"
+            circle.style.top=Math.random()*(window.innerHeight-70)+"px"
+            circle.style.left=Math.random()*(window.innerWidth-70)+"px"
+            document.body.appendChild(circle)
+        }
+    })
+</script>

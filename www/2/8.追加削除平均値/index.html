@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <table id="table">
+        <thead>
+            <tr>
+                <td>数値</td>
+                <td>操作</td>
+            </tr>
+        </thead>
+        <tbody id="tbody">
+            <tr>
+                <td><input id="inp" type="number"></td>
+                <td><button onclick="add()">追加</button></td>
+            </tr>
+        </tbody>
+    </table>
+    <p id="average">平均値：</p>
+    <script>
+        const ave = document.getElementById("average")
+        const tbody = document.getElementById("tbody")
+        let arry = []
+
+        const add = () => {
+        const inp = document.getElementById("inp")
+            if (inp.value) {
+                let num=Number(inp.value)
+                arry.push(num)
+                console.log(arry);
+                tbody.innerHTML += `<tr value=${arry.length-1}><td><input value=${num} readonly></td><td><button onclick="remove(${num})">削除</button></td></tr>`
+                Average()
+                // inp.value = ""
+            }
+        }
+        const remove = (num) => {
+            if (arry.length > 1) {
+                for(let i=0;i<arry.length;i++){
+                    if(arry[i]==num){
+                        arry.splice(i,1,)
+                        console.log(arry);
+                        break
+                    }
+                }
+                let rows=document.getElementsByTagName("input")
+                console.log(rows);
+                for(let i=0;i<rows.length;i++){
+                    if(rows[i].value==num){
+                        rows[i].parentNode.parentNode.remove()
+                    }
+                }
+                Average()
+            }
+        }
+        const Average = () => {
+            let sum = 0
+            for (let i = 0; i < arry.length; i++) {
+                sum += arry[i]
+            }
+            ave.textContent = "平均値：" + sum / arry.length
+        }
+    </script>
+</body>
+
+</html>

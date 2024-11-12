@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>画像切り抜きアプリケーション</title>
+</head>
+
+<body>
+    <input type="file" id="upload" accept="image/*">
+    <br><br>
+    <img id="img" src="" alt="">
+    <canvas id="imageCanvas" width="300" height="200" style="border:2px dashed red;"></canvas>
+    <br><br>
+    <input type="hidden" id="x1">
+    <input type="hidden" id="y1">
+    <input type="hidden" id="x2">
+    <input type="hidden" id="y2">
+    <button id="cropButton" onclick="cropImage()">切り抜く</button>
+    <button id="downloadButton" onclick="download()">ダウンロード</button>
+
+    <script>
+        const canvas = document.getElementById('imageCanvas');
+        const context = canvas.getContext('2d');
+        const img = document.getElementById("img")
+        const upload = document.getElementById("upload")
+        const cropButton = document.getElementById("cropButton")
+        const downloadbtn = document.getElementById("downloadButton")
+
+        upload.addEventListener('change', function (event) {
+            let file = event.target.files[0];
+            let reader = new FileReader();
+            reader.onload = function (e) {
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        });
+
+        function cropImage() {
+            var canvas = document.getElementById('imageCanvas');
+            var context = canvas.getContext('2d');
+            var rect = canvas.getBoundingClientRect();
+            var x1 = 0
+            var y1 = 0
+            var x2 = 300
+            var y2 = 200
+
+            // drawRect(context, x1, y1, x2, y2);
+
+            var image = new Image();
+            image.src = canvas.toDataURL('image/jpeg');
+            image.onload = function () {
+                var croppedCanvas = document.createElement('canvas');
+                var croppedContext = croppedCanvas.getContext('2d');
+                croppedCanvas.width = x2 - x1;
+                croppedCanvas.height = y2 - y1;
+                croppedContext.drawImage(image, x1, y1, x2 - x1, y2 - y1, 0, 0, x2 - x1, y2 - y1);
+            };
+            downloadbtn.style.display="block"
+            cropButton.style.display="none"
+        }
+        function download() {
+            var downloadLink = document.createElement('a');
+            downloadLink.href = croppedCanvas.toDataURL('image/jpeg');
+            downloadLink.download = 'crop-image.jpg';
+            downloadLink.click();
+            downloadLink.remove();
+            downloadbtn.style.display="none"
+            cropButton.style.display="block"
+        }
+    </script>
+</body>
+
+</html>
+<style>
+    #img {
+        position: absolute;
+        top: 50px;
+        left: 0;
+        height: 400px;
+    }
+
+    #imageCanvas {
+        position: absolute;
+        top: 50px;
+        left: 0;
+        z-index: 10;
+    }
+
+    #cropButton {
+        position: absolute;
+        top: 470px;
+        left: 0;
+    }
+    #downloadButton{
+        position: absolute;
+        top: 470px;
+        left: 0;
+        display: none;
+    }
+</style>

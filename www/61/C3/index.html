@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="inp">
+    <p id="text"></p>
+</body>
+</html>
+<script>
+    const inp=document.getElementById("inp")
+    const text=document.getElementById("text")
+
+    inp.addEventListener("input",()=>{
+        let val=inp.value
+        const rgb=/^rgb\(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]),\s?){2}()\)$/
+        const hex=/^#[0-9a-fA-F]{6}$/
+
+        if(val.match(rgb)){
+            val=val.replace("rgb(","")
+            val=val.replace(")","")
+            let list=val.split(",").map(text=>parseInt(text.trim()))
+            //trim=前後の空白削除
+            //parseInt=指定された基数(第二引数)の整数値を返す
+            list=list.map(num=>num<16?"0"+num.toString(16):num.toString(16))
+            text.textContent="#"+list.join("")
+            // join=配列の全要素を連結した新しいメソッドを返す
+        }else if(val.match(hex)){
+            val=val.replace("#","")
+            let list=[val.slice(0,2),val.slice(2,4),val.slice(4,6)]
+            list=list.map(num=>parseInt(num,16))
+            text.textContent="rgb("+list.join(",")+")"
+        }else{
+            text.textContent="error"
+        }
+    })
+</script>

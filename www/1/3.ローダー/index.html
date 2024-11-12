@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="d1"></div>
+    <div class="d2"></div>
+    <div class="d3"></div>
+    <div class="d4"></div>
+</body>
+</html>
+<style>
+    body{
+        display: flex;
+    }
+    div{
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        margin: 20px;
+    }
+    .d1{
+        background-color: #19a68c;
+        animation: d1 3s infinite;
+    }
+    .d2{
+        background-color: #f63d3a;
+        animation: d1 3s infinite;
+        animation-delay: .6s;
+    }
+    .d3{
+        background-color: #fda543;
+        animation: d1 3s infinite;
+        animation-delay: .9s;
+    }
+    .d4{
+        background-color: #193b48;
+        animation: d1 3s infinite;
+        animation-delay: 1.2s;
+    }
+    @keyframes d1{
+        0%{scale: 1;}
+        30%{scale: 1.4;}
+        60%{scale: 1;}
+    }
+</style>

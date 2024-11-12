@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDoリスト</title>
+</head>
+<body>
+    <div class="row">
+        <input type="checkbox" name="" id="a">
+        <label for="a">aaaaaaaaa</label>
+    </div>
+    <div class="row">
+        <input type="checkbox" name="" id="b">
+        <label for="b">bbbbbbbbb</label>
+    </div>
+    <div class="row">
+        <input type="checkbox" name="" id="c">
+        <label for="c">ccccccccc</label>
+    </div>
+</body>
+</html>
+<style>
+    .row{
+        display: flex;
+    }
+    input:checked~label{
+        text-decoration: line-through;
+    }
+</style>

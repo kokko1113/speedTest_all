@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>データ表示エリア</p>
+    <div id="div"></div>
+</body>
+</html>
+<script>
+    let num=0
+    const div=document.getElementById("div")
+    div.addEventListener('scroll',()=>{
+        if(div.scrollHeight-div.scrollTop<=div.clientHeight){
+            num++
+            tyahan()
+        }
+    })
+    const tyahan=()=>{
+        fetch('./aaa.php',{
+            method:"POST",
+            headers:{"Content-Type":"application/json"},
+            body:JSON.stringify({n:num})
+        })
+        .then(Response=>Response.json())
+        .then(res=>{
+            res.forEach(element => {
+                const ele=document.createElement("p")
+                ele.textContent=`名前:${element["name"]} 年齢:${element["age"]}`
+                div.appendChild(ele)
+            });
+        })
+        .catch(error=>{
+            console.log(error);
+        })
+        
+    }
+    tyahan()
+</script>
+<style>
+    #div{
+        width: 300px;
+        height: 300px;
+        overflow-y: scroll;
+    }
+</style>

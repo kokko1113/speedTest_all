@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="clock">
+        <div id="needle"></div>
+    </div>
+    <button onclick="start()">start</button>
+    <button onclick="stop()">stop</button>
+    <button onclick="reset()">reset</button>
+</body>
+
+</html>
+<script>
+    const needle = document.getElementById("needle")
+
+    let x = 0
+    let id
+    function start() {
+        id = setInterval(() => {
+            x += 6
+            needle.style.transform = `rotate(${x % 360}deg)`
+        }, 1000);
+    }
+    function stop() {
+        clearInterval(id)
+    }
+    function reset() {
+        clearInterval(id)
+        x = 0
+        needle.style.transform = `rotate(${x % 360}deg)`
+    }
+</script>
+<style>
+    #clock {
+        position: relative;
+        width: 300px;
+        height: 300px;
+        background: rgb(61, 61, 114);
+        border-radius: 50%;
+    }
+
+    #needle {
+        position: absolute;
+        top: 20px;
+        left: 50%;
+        width: 2px;
+        height: 130px;
+        background: red;
+        transform-origin: bottom;
+    }
+</style>

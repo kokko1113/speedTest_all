@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button onclick="toggle()">click</button>
+    <div id="show">#show</div>
+</body>
+
+</html>
+<script>
+    const show=document.getElementById("show")
+
+    function toggle(){
+        show.classList.toggle("none")
+    }
+</script>
+<style>
+    div {
+        width: 100px;
+        height: 100px;
+        border: 1px solid black;
+    }
+    .none{
+        display: none;
+    }
+</style>

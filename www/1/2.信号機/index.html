@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="circle red"></div>
+    <div class="circle yellow"></div>
+    <div class="circle green"></div>
+</body>
+</html>
+<style>
+    body{
+        display: flex;
+    }
+    .circle{
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        border: 2px solid black;
+    }
+    .red{
+        background-color: red;
+        animation: r 8s infinite;
+    }
+    .yellow{
+        background-color: yellow;
+        animation: ye 8s infinite;
+    }
+    .green{
+        background-color: green;
+        animation: g 8s infinite;
+    }
+    @keyframes g{
+        0%{opacity: 1;}
+        50%{opacity: 1;}
+        51%{opacity: 0.2;}
+        100%{opacity: 0.2;}
+    }
+    @keyframes ye{
+        0%{opacity: 0.2;}
+        50%{opacity: 0.2;}
+        51%{opacity: 1;}
+        62.5%{opacity: 1;}
+        63%{opacity: 0.2;}
+    }
+    @keyframes r{
+        0%{opacity: 0.2;}
+        62.5%{opacity: 0.2;}
+        63%{opacity: 1;}
+        100%{opacity: 1;}
+    }
+</style>

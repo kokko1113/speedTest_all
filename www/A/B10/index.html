@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>違和感</title>
+</head>
+<body>
+    <div class="ball"></div>
+    <div class="shadow"></div>
+</body>
+</html>
+<style>
+    .ball{
+        position: absolute;
+        top: 70%;
+        left: 50%;
+        translate: -50% -50%;
+        width: 50px;
+        height: 45px;
+        border-radius: 50%;
+        background: red;
+        animation: anima 2s infinite;
+    }
+    .shadow{
+        position: absolute;
+        top: 74%;
+        left: 50%;
+        translate: -50% -50%;
+        width: 30px;
+        height: 10px;
+        border-radius: 50%;
+        background: rgba(0, 0, 0, 0.344);
+        animation: aaa 2s infinite;
+        z-index: -10;
+    }
+    @keyframes anima{
+        0%{top: 70%;height: 45px;}
+        40%{top: 50%;height: 50px;}
+        100%{top: 70%;height: 45px;}
+    }
+    @keyframes aaa{
+        0%{width: 30px;}
+        40%{width: 50px;}
+        100%{width: 30px;}
+    }
+</style>

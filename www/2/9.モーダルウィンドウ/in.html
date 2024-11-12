@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="open">open</button>
+    <div id="div">
+        <p>モーダルウィンドウです</p>
+        <button id="close">close</button>
+    </div>
+    <div id="back"></div>
+</body>
+</html>
+<script>
+    const open=document.getElementById("open")
+    const close=document.getElementById("close")
+    const div=document.getElementById("div")
+    const back=document.getElementById("back")
+
+    open.addEventListener('click',()=>{
+        div.style.display="block"
+        back.style.display="block"
+        document.body.style.overflow="hidden"
+    })
+    close.addEventListener('click',()=>{
+        div.style.display="none"
+        back.style.display="none"
+        document.body.style.overflow="auto"
+    })
+</script>
+<style>
+    body{
+        height: 200vh;
+    }
+    #div{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        translate: -50% -50%;
+        width: 300px;
+        height: 200px;
+        border: 2px solid black;
+        display: none;
+        z-index: 10;
+    }
+    #back{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.308);
+        display: none;
+    }
+</style>

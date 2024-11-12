@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="text">今日は講習会です。今日は講習会です。今日は講習会です。</p>
+    <input type="text" id="inp">
+    <button id="btn">afs</button>
+</body>
+</html>
+<script>
+    const text=document.getElementById("text")
+    const inp=document.getElementById("inp")
+    const btn=document.getElementById("btn")
+
+    console.log(423424);
+    btn.addEventListener('click',()=>{
+        text.innerHTML=text.textContent.replace(new RegExp(inp.value,"g"),`<span>${inp.value}</span>`)
+        let arry=document.getElementsByTagName("span")
+        for(let i=0;i<arry.length;i++){
+            arry[i].style.background=`rgb(${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)})`
+        }
+    })
+</script>

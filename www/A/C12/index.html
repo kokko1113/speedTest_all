@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <section id="area"></section>
+    <section id="btns"></section>
+</body>
+</html>
+<script>
+    const area=document.getElementById("area")
+    const btns=document.getElementById("btns")
+
+    const colors=["black","red","white","blue","green","plum","skyblue","yellow","yellowgreen","orange","purple","aqua","orangered","pink","brown","gray"]
+    let color="transparent"
+    for(let i=0;i<colors.length;i++){
+        btns.innerHTML+=`<div onclick="select(${i})" id="btn" class="${i}" style="background:${colors[i]}"></div>`        
+    }
+    function select(num){
+        let arry=document.getElementsByTagName("div")
+        for(let i=0;i<arry.length;i++){
+            if(arry[i].classList==num){
+                arry[i].style.border="3px solid yellow"
+            }else{
+                arry[i].style.border="3px solid rgb(171, 171, 171)"
+            }
+        }
+        color=colors[num]
+    }
+
+    for(let i=0;i<256;i++){
+        area.innerHTML+=`<span onclick="draw(${i})" id="pixel" class="${i}"></span>`
+    }
+    function draw(num){
+        let arry=document.getElementsByTagName("span")
+        arry[num].style.background=color
+    }
+</script>
+<style>
+    #area{
+        display: flex;
+        flex-wrap: wrap;
+        width: 270px;
+    }
+    #btns{
+        display: flex;
+        flex-wrap: wrap;
+        width: 220px;
+    }
+    #btn{
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        border: 3px solid rgb(171, 171, 171);
+    }
+    #pixel{
+        width: 15px;
+        height: 15px;
+        border: .5px solid gray;
+    }
+</style>

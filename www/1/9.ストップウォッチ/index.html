@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="clock">
+        <div id="needle"></div>
+    </div>
+    <button id="start">スタート</button>
+    <button id="stop">ストップ</button>
+    <button id="reset">リセット</button>
+</body>
+
+</html>
+<script>
+    const start = document.getElementById("start")
+    const stop = document.getElementById("stop")
+    const reset = document.getElementById("reset")
+    const needle = document.getElementById("needle")
+
+    let id
+    let x = 0
+    let flag = false
+    start.addEventListener('click', () => {
+        if(flag){
+            return
+        }
+        flag = true
+        if (flag) {
+            id = setInterval(() => {
+                x += 6
+                needle.style.transform = `rotate(${x % 360}deg)`
+            }, 1000);
+        }
+    })
+    stop.addEventListener('click', () => {
+        flag=false
+        clearInterval(id)
+    })
+    reset.addEventListener('click', () => {
+        flag=false
+        x = 0
+        needle.style.transform = `rotate(${x % 360}deg)`
+        clearInterval(id)
+    })
+</script>
+<style>
+    .clock {
+        width: 300px;
+        height: 300px;
+        border: 1px solid black;
+        position: relative;
+    }
+
+    #needle {
+        position: absolute;
+        top: 0%;
+        left: 50%;
+        translate: -50% 0%;
+        transform-origin: bottom;
+        width: 3px;
+        height: 150px;
+        background-color: red;
+
+    }
+</style>

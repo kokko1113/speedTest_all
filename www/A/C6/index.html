@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="div"></div>
+</body>
+</html>
+<script>
+    const div=document.getElementById("div")
+
+    window.addEventListener('mousemove',(e)=>{
+        div.style.top=`${e.clientY}px`
+        div.style.left=`${e.clientX}px`
+    })
+</script>
+<style>
+    div{
+        position: absolute;
+        translate: -50% -50%;
+        width: 50px;
+        height: 50px;
+        background: orangered;
+    }
+</style>

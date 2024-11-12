@@ -1,0 +1,28 @@
+version: "3.8"
+services:
+  php:
+    build: ./php
+    image: php:speedtest
+    ports:
+      - "8080:80"
+    volumes:
+      - ./www:/var/www/html
+      - ./php/php.ini:/usr/local/etc/php/php.ini
+    working_dir: /var/www
+  mariadb:
+    image: mariadb
+    environment:
+      MARIADB_ROOT_PASSWORD: root
+    volumes:
+      - ./mariadb:/docker-entrypoint-initdb.d
+  phpmyadmin:
+    image: phpmyadmin
+    environment:
+      PMA_ARBITRARY: 1
+      PMA_HOST: mariadb
+      PMA_USER: root
+      PMA_PASSWORD: root
+    ports:
+      - "8081:80"
+    depends_on:
+      - mariadb

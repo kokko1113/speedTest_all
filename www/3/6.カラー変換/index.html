@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>カラー変換アプリ</title>
+</head>
+
+<body>
+    <input type="text" name="" id="input">
+    <p id="text"></p>
+    <!-- <div class="container">
+        <input type="text" id="colorInput"><br>
+        <button onclick="convertColor()">変換する</button><br>
+        <div id="resultArea"></div>
+    </div> -->
+</body>
+
+</html>
+
+<script>
+    const input = document.querySelector("#input")
+    const text = document.querySelector("#text")
+
+    input.addEventListener("input", () => {
+        let val = input.value // rgb(255, 255, 255) -> #ffffff
+        const rgbReg = /^rgb\(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]),\s?){2}(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\)$/
+        const hexReg = /^#[0-9a-fA-F]{6}$/
+        console.log(val);
+        if (val.match(rgbReg)) {
+            val = val.replace("rgb(", "") // 255, 255, 255)
+            val = val.replace(")", "") // 255, 255, 255
+            let list = val.split(",").map(text => parseInt(text.trim())) // [255, 255, 255]
+            list = list.map(num => num < 16 ? "0" + num.toString(16) : num.toString(16)) // ["ff", "ff", "ff"]
+            text.textContent = "#" + list.join("")
+        } else if (val.match(hexReg)) { // #ffffff
+            val = val.replace("#", "") // ffffff
+            let list = [
+                val.slice(0, 2),
+                val.slice(2, 4),
+                val.slice(4, 6)
+            ] // ["ff", "ff", "ff"]
+            list = list.map(num => parseInt(num, 16)) // [255, 255, 255]
+            text.textContent = "rgb(" + list.join(",") + ")" // rgb(255,255,255)
+        } else {
+            text.textContent = "エラー"
+        }
+    })
+    // function convertColor() {
+    //     const colorInput = document.getElementById('colorInput').value.replace(/ /g,"");
+    //     const resultArea = document.getElementById('resultArea');
+
+    //     let convertedColor;
+    //     if (/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/.test(colorInput)) {
+    //         convertedColor = hexToRgb(colorInput);
+    //     } else if (/^rgb\((\d{1,3}),(\d{1,3}),(\d{1,3})\)$/.test(colorInput)) {
+    //         convertedColor = rgbToHex(colorInput);
+    //     } else {
+    //         resultArea.textContent = 'エラー';
+    //         return;
+    //     }
+    //     resultArea.textContent = `変換結果：${convertedColor}`;
+    // }
+
+    // function hexToRgb(hex) {
+    //     const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+    //     hex = hex.replace(shorthandRegex, (m, r, g, b) => {
+    //         return r + r + g + g + b + b;
+    //     });
+
+    //     const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    //     const rgb = result ? {
+    //         r: parseInt(result[1], 16),
+    //         g: parseInt(result[2], 16),
+    //         b: parseInt(result[3], 16)
+    //     } : null;
+
+    //     return rgb ? `rgb(${rgb.r}, ${rgb.g}, ${rgb.b})` : 'エラー';
+    // }
+
+    // function rgbToHex(rgb) {
+    //     const result = /^rgb\((\d{1,3}),\s*(\d{1,3}),\s*(\d{1,3})\)$/.exec(rgb);
+    //     const hex = result ? '#' + ((1 << 24) + (parseInt(result[1]) << 16) + (parseInt(result[2]) << 8) + parseInt(result[3])).toString(16).slice(1) : null;
+    //     return hex ? hex.toUpperCase() : 'エラー';
+    // }
+
+</script>

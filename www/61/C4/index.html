@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="canvas" width="300" height="300"></canvas>
+    <button onclick="png()">png</button>
+    <button onclick="jpg()">jpg</button>
+    <div id="choices"></div>
+</body>
+
+</html>
+<script>
+    const canvas = document.getElementById("canvas")
+    const ctx = canvas.getContext("2d")
+    const choices = document.getElementById("choices")
+    ctx.fillStyle = "white"
+    ctx.fillRect(0, 0, 300, 300)
+
+    const colors = ["black", "red", "blue", "green", "orange"]
+    let color = "black"
+    for (let i = 0; i < colors.length; i++) {
+        choices.innerHTML += `<div class="${i}" id="choice" onclick="select(${i})" 
+        style="background:${colors[i]};"></div>`
+    }
+
+    function select(num) {
+        color = colors[num]
+    }
+
+    ctx.strokeRect(0, 0, 300, 300)
+    let flag = false
+    canvas.addEventListener("mousedown", (e) => {
+        flag=true
+        ctx.beginPath()
+        ctx.strokeStyle=color
+        ctx.lineWidth=2
+        ctx.moveTo(e.offsetX,e.offsetY)
+    })
+    canvas.addEventListener("mousemove",(e)=>{
+        if(flag){
+            ctx.lineTo(e.offsetX,e.offsetY)
+            ctx.stroke()
+        }
+    })
+    canvas.addEventListener("mouseup",(e)=>{
+        flag=false
+    })
+</script>
+<style>
+    #choice {
+        width: 50px;
+        height: 50px;
+        border: 3px solid gray;
+    }
+</style>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>12</li>
+        <li>34</li>
+        <li>653</li>
+    </ul>
+    <p id="calc"></p>
+</body>
+</html>
+<script>
+    const calc=document.getElementById("calc")
+
+    let sum=0
+    let arry=document.getElementsByTagName("li")
+    for(let i=0;i<arry.length;i++){
+        sum+=Number(arry[i].textContent)
+    }
+    calc.textContent="合計:"+sum
+</script>

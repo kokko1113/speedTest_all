@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text">
+    <p></p>
+</body>
+
+</html>
+
+<script>
+    const inp = document.querySelector("input")
+    const text = document.querySelector("p")
+
+    inp.addEventListener('input', () => {
+        const isRGB = inp.value.startsWith("rgb")
+        const isHEX = inp.value.startsWith("#")
+
+        if (isRGB) {
+            toHEX(inp.value)
+        } else if (isHEX) {
+            toRGB(inp.value)
+        } else {
+            text.textContent = "error"
+        }
+    })
+
+    function toHEX(inp){
+        let numbers=inp.match(/\d+/g).map(Number)
+        let hex=numbers.foreach(x => {
+            let hex=x.toString(16)
+            return hex.length==1?"0"+hex:hex
+        });
+        text.textContent=`#`+hex.join("")
+    }
+
+    function toRGB(inp){
+        const numbers=/^#([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(inp)
+        if(!numbers) text.textContent="error"
+        text.textContent=`rgb(${parseInt(numbers[1],16)},${parseInt(numbers[2],16)},${parseInt(numbers[3],16)})`
+    }
+</script>

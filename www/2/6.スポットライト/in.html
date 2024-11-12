@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="back"></div>
+    <img id="img" src="stemask.bex.jp/uscs/a/42wt" alt="">
+</body>
+</html>
+<script>
+    const img=document.getElementById("img")
+    const back=document.getElementById("back")
+
+    let x=100
+    img.addEventListener('mousemove',(e)=>{
+        back.style.backgroundImage=`radial-gradient(circle at ${e.clientX}px ${e.clientY}px,translate,translate ${x}px,rgb(0,0,0,.6) ${x+30}px)`
+    })
+    img.addEventListener('wheel',(e)=>{
+        if(e.deltaY<0){
+            x++
+        }else if(e.deltaY>0){
+            x--
+        }
+        if(x<10){
+            x=10
+        }
+        back.style.backgroundImage=`radial-gradient(circle at ${e.clientX}px ${e.clientY}px,translate,translate ${x}px,rgb(0,0,0,.6) ${x+30}px)`
+    })
+    img.addEventListener('mouseleave',()=>{
+        back.style.backgroundImage=`none`
+    })
+</script>
+<style>
+    #img{
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -10;
+        height: 300px;
+    }
+    div{
+        position: absolute;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        width: 100vw;
+        height: 100vh;
+    }
+</style>

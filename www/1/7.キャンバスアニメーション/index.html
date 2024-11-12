@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="canvas" width="400"height="320" style="border: 1px solid black;"></canvas>
+</body>
+</html>
+<script>
+    const canvas=document.getElementById("canvas")
+    const ctx=canvas.getContext("2d")
+
+    let x=0
+    const step=()=>{
+        ctx.clearRect(0,0,400,320)
+        ctx.beginPath()
+        ctx.fillStyle="red"
+        ctx.arc(x+10,160,5,0,360)
+        ctx.fill()
+        ctx.closePath()
+        x+=3
+        requestAnimationFrame(step)
+    }
+    window.addEventListener('load',()=>{
+        step()
+    })
+</script>

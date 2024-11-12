@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="div" style="width: 300px;height: 200px;border: 1px solid black;"></div>
+    R:<input id="red" type="range" max="255">
+    G:<input id="green" type="range" max="255">
+    B:<input id="blue" type="range" max="255">
+</body>
+
+</html>
+<script>
+    const div = document.getElementById("div")
+    const red = document.getElementById("red")
+    const green = document.getElementById("green")
+    const blue = document.getElementById("blue")
+
+    let redvalue = 127
+    let greenvalue = 127
+    let bluevalue = 127
+    div.style.background = `rgb(${redvalue},${greenvalue},${bluevalue})`
+    div.textContent = `rgb(${redvalue},${greenvalue},${bluevalue})`
+    red.addEventListener('input', () => {
+        redvalue = red.value
+        div.style.background = `rgb(${redvalue},${greenvalue},${bluevalue})`
+        div.textContent = `rgb(${redvalue},${greenvalue},${bluevalue})`
+    })
+    green.addEventListener('input', () => {
+        greenvalue = green.value
+        div.style.background = `rgb(${redvalue},${greenvalue},${bluevalue})`
+        div.textContent = `rgb(${redvalue},${greenvalue},${bluevalue})`
+    })
+    blue.addEventListener('input', () => {
+        bluevalue = blue.value
+        div.style.background = `rgb(${redvalue},${greenvalue},${bluevalue})`
+        div.textContent = `rgb(${redvalue},${greenvalue},${bluevalue})`
+    })
+</script>

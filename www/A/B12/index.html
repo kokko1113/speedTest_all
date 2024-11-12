@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <p>30%</p>
+        <p>70%</p>
+    </div>
+</body>
+</html>
+<style>
+    div{
+        position: relative;
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        background: conic-gradient(black 0% 70%,gray 70% 100%);
+    }
+    p:nth-child(1){
+        position: absolute;
+        top: 25px;
+        left: 25px;
+    }
+    p:nth-child(2){
+        position: absolute;
+        top: 60px;
+        left: 85px;
+        color: white;
+    }
+</style>

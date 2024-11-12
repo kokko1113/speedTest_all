@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="canvas" width="400" height="320"></canvas>
+</body>
+</html>
+<script>
+    const canvas=document.getElementById("canvas")
+    const ctx=canvas.getContext("2d")
+    ctx.strokeRect(0,0,400,320)
+    let x=0
+    window.addEventListener('load',()=>{
+        aaa()
+    })
+    function aaa(){
+        ctx.clearRect(0,0,400,320)
+        ctx.strokeRect(0,0,400,320)
+        ctx.beginPath()
+        ctx.fillStyle="red"
+        ctx.arc(x+10,150,5,0,360)
+        ctx.fill()
+        ctx.closePath()
+        x+=3
+        requestAnimationFrame(aaa)
+    }
+</script>

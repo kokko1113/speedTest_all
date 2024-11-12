@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number" name="" id="inp" min="0">
+    <button id="btn">生成</button>
+    <p id="text"></p>
+</body>
+</html>
+<script>
+    const inp=document.getElementById("inp")
+    const btn=document.getElementById("btn")
+    const text=document.getElementById("text")
+
+    const fonts="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+    btn.addEventListener('click',()=>{
+        text.textContent=""
+        for(let i=0;i<inp.value;i++){
+            text.textContent+=fonts.split("")[Math.floor(Math.random()*fonts.length)]
+        }
+    })
+</script>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        
+    <section class="s1">section1</section>
+    <section class="s2">section2</section>
+    <section class="s3">section3</section>
+    <section class="s4">section4</section>
+    </div>
+</body>
+</html>
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    div{
+        scroll-snap-type: y mandatory;
+        overflow: auto;
+        height: 100vh;
+    }
+    section{
+        scroll-snap-align: start;
+        height: 100vh;
+    }
+    .s1{
+        background-color: pink;
+    }
+    .s2{
+        background-color: skyblue;
+    }
+    .s3{
+        background-color: yellow;
+    }
+    .s4{
+        background-color: orange;
+    }
+</style>

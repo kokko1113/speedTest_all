@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="canvas" width="300" height="300"></canvas>
+    <button id="jpg" onclick="jpgdownLoad()">jpg</button>
+    <button id="png" onclick="pngdownLoad()">png</button>
+    <div id="choices"></div>
+</body>
+
+</html>
+<script>
+
+    /** @type {HTMLCanvasElement} */
+    const canvas = document.getElementById("canvas")
+    const ctx = canvas.getContext("2d")
+    const choices = document.getElementById("choices")
+    const jpg = document.getElementById("jpg")
+    const png = document.getElementById("png")
+    ctx.fillStyle="white";
+    ctx.fillRect(0,0,300,300);
+
+
+    const colors = ["red", "black", "blue", "green", "orange"]
+    let color = "black"
+    for (let i = 0; i < colors.length; i++) {
+        choices.innerHTML += `<div class="${i}"id="choice"onclick="select(${i})"style="background:${colors[i]}"></div>`
+    }
+    const select = (num) => {
+        const arry = document.getElementsByTagName("div")
+        color = colors[num]
+    }
+
+    ctx.strokeRect(0, 0, 300, 300)
+    let flag = false
+    canvas.addEventListener('mousedown', (e) => {
+        flag = true
+        ctx.beginPath()
+        ctx.strokeStyle = color
+        ctx.lineWidth = 2;
+        ctx.moveTo(e.offsetX, e.offsetY);
+    })
+    canvas.addEventListener('mousemove', (e) => {
+        if (flag) {
+            // ctx.arc(e.clientX, e.clientY, 2, 0, 360)
+            // ctx.fill()
+            ctx.lineTo(e.offsetX, e.offsetY);
+            ctx.stroke();
+        }
+    })
+    canvas.addEventListener('mouseup', () => {
+        flag = false
+    })
+    const jpgdownLoad = () => {
+        const a = document.createElement("a");
+        a.href = canvas.toDataURL("image/jpg");
+        a.download = "test.jpg";
+        a.click();
+    }
+    const pngdownLoad=()=>{
+        const a = document.createElement("a");
+        a.href = canvas.toDataURL("image/png");
+        a.download = "test.png";
+        a.click();
+    }
+</script>
+<style>
+    #choices {
+        display: flex;
+    }
+
+    #choice {
+        width: 20px;
+        height: 20px;
+        border: 3px solid gray;
+        border-radius: 50%;
+    }
+</style>
