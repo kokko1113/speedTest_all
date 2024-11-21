@@ -1,55 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    <div class="g"></div>
-    <div class="y"></div>
-    <div class="r"></div>
+    <div class="all">
+        <div class="content">
+            <h2>2024</h2>
+            <p>イベントの詳細</p>
+        </div>
+        <div class="content">
+            <h2>2025</h2>
+            <p>イベントの詳細</p>
+        </div>
+        <div class="content">
+            <h2>2025</h2>
+            <p>イベントの詳細</p>
+        </div>
+        <div class="content">
+            <h2>2025</h2>
+            <p>イベントの詳細</p>
+        </div>
+        <div class="content">
+            <h2>2025</h2>
+            <p>イベントの詳細</p>
+        </div>
+        <div class="content">
+            <h2>2025</h2>
+            <p>イベントの詳細</p>
+        </div>
+    </div>
 </body>
+
 </html>
 <style>
-    body{
-        display: flex;
+    * {
+        margin: 0;
+        box-sizing: border-box;
     }
-    div{
-        width: 80px;
-        height: 80px;
+
+    .all {
+        width: 400px;
+
+    }
+
+    .content {
+        position: relative;
+        width: 50%;
+        padding: 10px;
+    }
+
+    .content:nth-of-type(even) {
+        margin-left: auto;
+    }
+
+    .content:nth-of-type(odd)::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 5px;
+        height: 100%;
+        background-color: gray;
+        translate: 50% 0;
+    }
+
+    .content:nth-of-type(odd)::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: 0;
+        width: 20px;
+        height: 20px;
         border-radius: 50%;
+        border: 5px solid white;
+        background-color: gray;
+        translate: 50% -50%;
     }
-    .g{
-        background: green;
-        animation: g 8s infinite;
+
+    .content:nth-of-type(even)::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 5px;
+        height: 100%;
+        background-color: gray;
+        translate: -50% 0;
     }
-    .y{
-        background: yellow;
-        animation: y 8s infinite;
-    }
-    .r{
-        background: red;
-        animation: r 8s infinite;
-    }
-    @keyframes g{
-        0%{opacity: 1;}
-        50%{opacity: 1;}
-        51%{opacity: 0.2;}
-        100%{opacity: 0.2;}
-    }
-    @keyframes y{
-        0%{opacity: 0.2;}
-        50%{opacity: 0.2;}
-        51%{opacity: 1;}
-        62.5%{opacity: 1;}
-        63%{opacity: 0.2;}
-        100%{opacity: 0.2;}
-    }
-    @keyframes r{
-        0%{opacity: 0.2;}
-        62.5%{opacity: 0.2;}
-        63%{opacity: 1;}
-        100%{opacity: 1;}
+
+    .content:nth-of-type(even)::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        border: 5px solid white;
+        background-color: gray;
+        translate: -50% -50%;
     }
 </style>

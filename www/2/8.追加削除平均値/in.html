@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="number" name="" id="inp" class="none">
+    <button onclick="addRow()">追加</button>
+    <div id="box"></div>
+    <p id="text"></p>
+</body>
+
+</html>
+<script>
+    const text = document.getElementById("text")
+    const box = document.getElementById("box")
+    const addRow = () => {
+        const inp = document.getElementById("inp")
+        if (inp.value == "") return
+        const div = document.createElement("div")
+        const input = document.createElement("input")
+        const button = document.createElement("button")
+        button.textContent = "削除"
+        button.addEventListener("onclick",()=>{
+            deleteRow(div)
+        })
+        input.value = inp.value
+        input.classList.add("ele")
+        input.type = "number"
+        div.appendChild(input)
+        div.appendChild(button)
+        box.appendChild(div)
+        inp.value = ""
+        calcAverage()
+    }
+    function deleteRow(div) {
+        console.log(div);
+
+        div.remove()
+        calcAverage()
+    }
+    function calcAverage() {
+        const numbers = document.querySelectorAll(".ele")
+        let ave = 0
+        numbers.forEach(num => {
+            ave += Number(num.value)
+        })
+        text.textContent = ave / numbers.length
+    }
+</script>

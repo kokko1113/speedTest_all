@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>fhaflhernclarejfamoerhfnacl,;,zc,fmsoerufcoe</p>
+    <input type="text">
+    <button onclick="kensaku()">kensaku</button>
+</body>
+
+</html>
+<script>
+    function kensaku() {
+        const inp = document.querySelector("input").value
+        const text = document.querySelector("p")
+
+        text.innerHTML = text.textContent.replace(new RegExp(inp, "g"), `<span>${inp}</span>`)
+        const spans = document.querySelectorAll("span")
+        spans.forEach(span => {
+            span.style.background = `rgb(${Math.floor(Math.random() * 255)},${Math.floor(Math.random() * 255)},${Math.floor(Math.random() * 255)})`
+        })
+    }
+</script>

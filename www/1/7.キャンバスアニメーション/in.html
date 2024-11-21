@@ -6,24 +6,25 @@
     <title>Document</title>
 </head>
 <body>
-    <canvas id="canvas" width="400" height="320" style="border: 1px solid black;"></canvas>
+    <canvas id="canvas" width="300" height="300" style=" border: 1px solid black;"></canvas>
 </body>
 </html>
 <script>
     const canvas=document.getElementById("canvas")
     const ctx=canvas.getContext("2d")
+    ctx.fillRect(0,0,300,300)
+    let x=10
 
-    let x=0
     const step=()=>{
-        ctx.clearRect(0,0,400,320)
+        ctx.clearRect(0,0,300,300)
         ctx.beginPath()
-        ctx.arc(x,160,10,0,360)
+        ctx.fillStyle="red"
+        ctx.arc(x,160,5,0,360)
         ctx.fill()
-        ctx.closePath()
         x+=3
         requestAnimationFrame(step)
     }
-    window.addEventListener('load',()=>{
+    window.addEventListener("load",()=>{
         step()
     })
 </script>

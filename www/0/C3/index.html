@@ -6,26 +6,48 @@
     <title>Document</title>
 </head>
 <body>
-    <button onclick="kaeru()">切り替え</button>
-    <p></p>
+    <button onclick="aaa()" class="btn">表示</button>
+    <div class="mo none">
+        モーダルウィンドウです
+        <button onclick="aaa()">閉じる</button>
+    </div>
+    <button class="back none" onclick="aaa()"></button>
 </body>
 </html>
 <script>
-    const text=document.querySelector("p")
-    let flag=false
-kaeru()
-    function kaeru(){
-        flag=!flag
-        text.textContent=flag?"ライトモードテスト":"ナイトモードテスト"
-        document.body.style.background=flag?"#FFF":"#000"
-        document.body.style.color=flag?"#000":"#FFF"
+    const div=document.querySelector(".mo")
+    const back=document.querySelector(".back")
+    function aaa(){
+        console.log("aaa");
+        
+        div.classList.toggle("none")
+        back.classList.toggle("none")
+        document.body.style.overflow="hidden"
     }
+    back.addEventListener("click",aaa)
 </script>
 <style>
-    p{
+    body{
+        height: 200vh;
+    }
+    .btn{
+        z-index: -100;
+    }
+    .none{
+        display: none;
+    }
+    .mo{
+        width: 200px;
+        height: 170px;
+        background-color: pink;
+    }
+    .back{
+        width: 100%;
+        height: 100%;
         position: absolute;
-        top: 50%;
-        left: 50%;
-        translate: -50% -50%;
+        top: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.361);
+        z-index: -1;
     }
 </style>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="aaa"><div class="back"></div></div>
+</body>
+</html>
+<style>
+    .back{
+        width: 500px;
+        height: 500px;
+        background: conic-gradient(pink ,skyblue,pink);
+        animation: anima 3s infinite linear;
+        position: absolute;
+        top: -80%;
+        left: -80%;
+    }
+    .aaa{
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+    }
+    @keyframes anima{
+        0%{transform: rotate(0deg)}
+        100%{transform: rotate(360deg)}
+    }
+</style>

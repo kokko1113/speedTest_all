@@ -6,9 +6,9 @@
     <title>Document</title>
 </head>
 <body>
-    <div></div>
-    <div></div>
-    <div></div>
+    <div class="g"></div>
+    <div class="y"></div>
+    <div class="r"></div>
 </body>
 </html>
 <style>
@@ -20,35 +20,35 @@
         height: 80px;
         border-radius: 50%;
     }
-    div:nth-child(1){
-        background-color: green;
+    .g{
+        background: green;
         animation: g 8s infinite;
     }
-    div:nth-child(2){
-        background-color: yellow;
+    .y{
+        background: yellow;
         animation: y 8s infinite;
     }
-    div:nth-child(3){
-        background-color: red;
+    .r{
+        background: red;
         animation: r 8s infinite;
     }
     @keyframes g{
         0%{opacity: 1;}
         50%{opacity: 1;}
-        51%{opacity: .2;}
-        100%{opacity: .2;}
+        51%{opacity: 0.2;}
+        100%{opacity: 0.2;}
     }
     @keyframes y{
-        0%{opacity: .2;}
-        50%{opacity: .2;}
+        0%{opacity: 0.2;}
+        50%{opacity: 0.2;}
         51%{opacity: 1;}
         62.5%{opacity: 1;}
-        63%{opacity: .2;}
-        100%{opacity: .2;}
+        63%{opacity: 0.2;}
+        100%{opacity: 0.2;}
     }
     @keyframes r{
-        0%{opacity: .2;}
-        62.5%{opacity: .2;}
+        0%{opacity: 0.2;}
+        62.5%{opacity: 0.2;}
         63%{opacity: 1;}
         100%{opacity: 1;}
     }

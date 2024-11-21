@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Loading...</h1>
+    <div class="all">
+        <div class="aaa"></div>
+        <div class="aaa"></div>
+        <div class="aaa"></div>
+        <div class="aaa"></div>
+        <div class="aaa"></div>
+    </div>
+</body>
+</html>
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    .all{
+        width: 167px;
+        display: flex;
+        justify-content: space-evenly;
+    }
+    .aaa{
+        width: 17%;
+        height: 5px;
+        background-color: black;
+    }
+    .aaa:nth-child(1){
+        animation: a1 5s infinite linear;
+    }
+    .aaa:nth-child(2){
+        animation: a2 5s infinite linear;
+    }
+    .aaa:nth-child(3){
+        animation: a3 5s infinite linear;
+    }
+    .aaa:nth-child(4){
+        animation: a4 5s infinite linear;
+    }
+    .aaa:nth-child(5){
+        animation: a5 5s infinite linear;
+    }
+    @keyframes a1{
+        0%{opacity: 0;}
+        17%{opacity: 0;}
+        18%{opacity: 1;}
+        100%{opacity: 1;}
+    }
+    @keyframes a2{
+        0%{opacity: 0;}
+        34%{opacity: 0;}
+        35%{opacity: 1;}
+        100%{opacity: 1;}
+    }
+    @keyframes a3{
+        0%{opacity: 0;}
+        51%{opacity: 0;}
+        52%{opacity: 1;}
+        100%{opacity: 1;}
+    }
+    @keyframes a4{
+        0%{opacity: 0;}
+        68%{opacity: 0;}
+        69%{opacity: 1;}
+        100%{opacity: 1;}
+    }
+    @keyframes a5{
+        0%{opacity: 0;}
+        85%{opacity: 0;}
+        86%{opacity: 1;}
+        100%{opacity: 1;}
+    }
+</style>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="add" placeholder="New task">
+    <button onclick="addRow()">Add</button>
+    <div class="all"></div>
+    
+</body>
+
+</html>
+<script>
+    const all = document.querySelector(".add")
+    let num=0
+
+    function addRow(){
+        const add=document.getElementById("add")
+        const buttonComp=document.createElement("button")
+        const buttonDelete=document.createElement("button")
+        buttonComp.addEventListener("click",()=>{
+            complete()
+        })
+        buttonComp.textContent="Complete"
+        buttonDelete.addEventListener("click",()=>{
+            deleteRow()
+        })
+        buttonComp.textContent="Delete"
+        all.innerHTML+=`
+        <input id="${num}" type="checkbox" style="display:none">
+        <label for="${num}">${add.value}</label>
+        ${buttonComp}
+        ${buttonDelete}
+        `
+        num++
+    }
+
+    function complete(){
+        
+    }
+
+    function deleteRow(){
+
+    }
+</script>
+<style>
+    input:checked+label{
+        text-decoration: line-through;
+    }
+</style>

@@ -23,28 +23,23 @@ $count = 0
 <body>
     <table border="1">
         <tr>
-            <th>問</th>
-            <th>解</th>
-            <th>回</th>
+            <th>質問番号</th>
+            <th>実際の回答</th>
+            <th>提出された回答</th>
         </tr>
         <?php for ($i = 0; $i < count($a); $i++): ?>
             <tr>
-                <td><?php echo $i+1 ?>
-                </td>
-                <td><?php echo $a[$i][1]; ?>
-                </td>
-                <td><?php echo $b[$i][1]; ?>
-                </td>
-                <?php if ($a[$i][1] == $b[$i][1]): ?>
-                    <?php $count++?>
-                <?php endif; ?>
-
+                <td><?php echo $i + 1; ?></td>
+                <td><?php echo $a[$i][1]; ?></td>
+                <td><?php echo $b[$i][1]; ?></td>
             </tr>
+            <?php if ($a[$i][1] == $b[$i][1]): ?>
+                <?php $count++ ?>
+            <?php endif; ?>
         <?php endfor; ?>
     </table>
 
-    <?php echo "正答数：".$count."/10"?>
-    
+    <?php echo "正答数:" . $count . "/10"; ?>
 </body>
 
 </html>

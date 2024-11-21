@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="all">
+        <div class="content">
+            <h2 class="title">2024</h2>
+            <p class="text">イベントの詳細</p>
+        </div>
+        <div class="content">
+            <h2 class="title">2025</h2>
+            <p class="text">イベントの詳細</p>
+        </div>
+        <div class="content">
+            <h2 class="title">2024</h2>
+            <p class="text">イベントの詳細</p>
+        </div>
+        <div class="content">
+            <h2 class="title">2025</h2>
+            <p class="text">イベントの詳細</p>
+        </div>
+        <div class="content">
+            <h2 class="title">2024</h2>
+            <p class="text">イベントの詳細</p>
+        </div>
+        <div class="content">
+            <h2 class="title">2025</h2>
+            <p class="text">イベントの詳細</p>
+        </div>
+        <div class="content">
+            <h2 class="title">2024</h2>
+            <p class="text">イベントの詳細</p>
+        </div>
+        <div class="content">
+            <h2 class="title">2025</h2>
+            <p class="text">イベントの詳細</p>
+        </div>
+    </div>
+</body>
+
+</html>
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    .all {
+        width: 400px;
+    }
+
+    .content {
+        position: relative;
+        width: 50%;
+        padding: 20px;
+    }
+    .content:nth-last-of-type(even) {
+        margin-left: auto;
+    }
+
+    .content:nth-last-of-type(odd)::after {
+        position: absolute;
+        top: 0;
+        right: 0;
+        translate: 50% 0;
+        content: "";
+        width: 5px;
+        height: 100%;
+        background-color: gray;
+    }
+    .content:nth-last-of-type(odd)::before {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        translate: 50% -50%;
+        content: "";
+        width: 23px;
+        height: 23px;
+        background-color: gray;
+        border: 3px solid white;
+        border-radius: 50%;
+        z-index: 100;
+    }
+
+    .content:nth-last-of-type(even)::after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        translate: -50% 0;
+        content: "";
+        width: 5px;
+        height: 100%;
+        background-color: gray;
+    }
+    .content:nth-last-of-type(even)::before {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        translate: -50% -50%;
+        content: "";
+        width: 23px;
+        height: 23px;
+        background-color: gray;
+        border: 3px solid white;
+        border-radius: 50%;
+        z-index: 100;
+    }
+</style>

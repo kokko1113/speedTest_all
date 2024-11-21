@@ -1,48 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-
 <body>
     <input type="text">
+    <button onclick="henkan()">henkan</button>
     <p></p>
 </body>
-
 </html>
-
 <script>
-    const inp = document.querySelector("input")
-    const text = document.querySelector("p")
-
-    inp.addEventListener('input', () => {
-        const isRGB = inp.value.startsWith("rgb")
-        const isHEX = inp.value.startsWith("#")
-
-        if (isRGB) {
-            toHEX(inp.value)
-        } else if (isHEX) {
-            toRGB(inp.value)
-        } else {
-            text.textContent = "error"
+    function henkan(){
+        const inp=document.querySelector("input")
+        const text=document.querySelector("p")
+        let val=inp.value
+        
+        const isRGB=/^rgb((\d{1,3}),(\d{1,3}),(\d{1,3}))$/
+        const isHEX=/^#([0-9a-fA-F]{6})$/
+        
+        if(val.match(isRGB)){
+            val=val.replace("rgb(","")
+            val=val.replace(")","")
+            let list=val.split(",").map(text=>parseInt(text.trim()))
+            console.log(list);
+            
+            list =list.map(num=>num<16?"0"+num.toString(16):num.toString(16))
+            text.textContent="#"+list.join("")
+        }else if(val.match(isHEX)){
+            val=val.replace("#","")
+            let list =[val.slice(0,2),val.slice(2,4),val.slice(4,6)]
+            list=list.map(num=>parseInt(num,16))
+            text.textContent=`rgb(${list.join(",")})`
+        }else{
+            text.textContent="error"
         }
-    })
-
-    function toHEX(inp){
-        let numbers=inp.match(/\d+/g).map(Number)
-        let hex=numbers.foreach(x => {
-            let hex=x.toString(16)
-            return hex.length==1?"0"+hex:hex
-        });
-        text.textContent=`#`+hex.join("")
-    }
-
-    function toRGB(inp){
-        const numbers=/^#([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(inp)
-        if(!numbers) text.textContent="error"
-        text.textContent=`rgb(${parseInt(numbers[1],16)},${parseInt(numbers[2],16)},${parseInt(numbers[3],16)})`
     }
 </script>

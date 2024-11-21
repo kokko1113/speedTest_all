@@ -1,7 +1,6 @@
 <?php
-if(isset($_GET["text"])){
-    echo preg_replace("/[0-9]/","",$_GET["text"]);
-}
+$text=$_GET["text"];
+$text=preg_replace("/[0-9]/","",$text);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,9 +10,12 @@ if(isset($_GET["text"])){
     <title>Document</title>
 </head>
 <body>
-    <form action="" method="get">
-        <input type="text" name="text">
-        <button type="submit">送信</button>
+    <form action="." method="get">
+        <input type="text">
+        <button>aaa</button>
     </form>
+
+    <?php echo $text;?>
+    
 </body>
 </html>

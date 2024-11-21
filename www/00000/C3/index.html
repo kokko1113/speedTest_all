@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="kaeru()">切り替え</button>
+    <p></p>
+</body>
+</html>
+<script>
+    const text=document.querySelector("p")
+    let flag=false
+kaeru()
+    function kaeru(){
+        flag=!flag
+        text.textContent=flag?"ライトモードテスト":"ナイトモードテスト"
+        document.body.style.background=flag?"#FFF":"#000"
+        document.body.style.color=flag?"#000":"#FFF"
+    }
+</script>
+<style>
+    p{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        translate: -50% -50%;
+    }
+</style>

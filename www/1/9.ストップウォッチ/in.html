@@ -8,54 +8,57 @@
 </head>
 
 <body>
-    <div id="clock">
-        <div id="needle"></div>
+    <div class="clock">
+        <div class="needle"></div>
     </div>
-    <button id="start">start</button>
-    <button id="stop">stop</button>
-    <button id="reset">reset</button>
+    <button onclick="stato()">start</button>
+    <button onclick="stoppu()">stop</button>
+    <button onclick="resetto()">reset</button>
 </body>
 
 </html>
 <script>
-    const needle = document.getElementById("needle")
-    const start = document.getElementById("start")
-    const stop = document.getElementById("stop")
-    const reset = document.getElementById("reset")
-
+    const needle = document.querySelector(".needle")
     let x = 0
-    let id
     let flag = false
-    start.addEventListener('click', () => {
+    let id
+    function stato() {
+        if (flag) return
+        flag = true
         id = setInterval(() => {
             x += 6
             needle.style.transform = `rotate(${x}deg)`
         }, 1000);
-    })
-    stop.addEventListener('click', () => {
+        return () => {
+            clearInterval(id)
+        }
+    }
+    function stoppu() {
+        flag = false
         clearInterval(id)
-    })
-    reset.addEventListener('click', () => {
+    }
+    function resetto() {
         x = 0
         needle.style.transform = `rotate(${x}deg)`
         clearInterval(id)
-    })
+    }
 </script>
 <style>
-    #clock {
+    .clock {
         width: 300px;
         height: 300px;
         border: 1px solid black;
         position: relative;
     }
 
-    #needle {
+    .needle {
+        width: 2px;
+        height: 150px;
         position: absolute;
         top: 0;
-        left: 50%;
-        width: 3px;
-        height: 150px;
-        background-color: red;
+        left: 150px;
+        /* translate: 0; */
         transform-origin: bottom;
+        background: red;
     }
 </style>

@@ -6,12 +6,10 @@
     <title>Document</title>
 </head>
 <body>
-    <div>
-        
-    <section class="s1">section1</section>
-    <section class="s2">section2</section>
-    <section class="s3">section3</section>
-    <section class="s4">section4</section>
+    <div class="all">
+        <section>section1</section>
+        <section>section2</section>
+        <section>section3</section>
     </div>
 </body>
 </html>
@@ -21,25 +19,23 @@
         margin: 0;
         box-sizing: border-box;
     }
-    div{
-        scroll-snap-type: y mandatory;
+    .all{
         overflow: auto;
+        scroll-snap-type: y mandatory;
         height: 100vh;
+        position: relative;
     }
     section{
         scroll-snap-align: start;
         height: 100vh;
     }
-    .s1{
+    section:nth-child(1){
         background-color: pink;
     }
-    .s2{
+    section:nth-child(2){
         background-color: skyblue;
     }
-    .s3{
+    section:nth-child(3){
         background-color: yellow;
-    }
-    .s4{
-        background-color: orange;
     }
 </style>
